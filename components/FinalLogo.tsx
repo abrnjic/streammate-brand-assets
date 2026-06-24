@@ -1,47 +1,168 @@
+const BASE_FONT = "'Inter', 'Segoe UI', system-ui, sans-serif";
+
+function LogoWordmark({ scale = 1, dark = true }: { scale?: number; dark?: boolean }) {
+  const size = 3.2 * scale;
+  return (
+    <div style={{ display: "flex", alignItems: "baseline" }}>
+      <span
+        style={{
+          fontFamily: BASE_FONT,
+          fontWeight: 700,
+          fontSize: `${size}rem`,
+          letterSpacing: "-0.055em",
+          background: dark
+            ? "linear-gradient(110deg, #e0f2fe 0%, #38bdf8 55%, #06b6d4 100%)"
+            : "linear-gradient(110deg, #0284c7 0%, #0ea5e9 55%, #06b6d4 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          lineHeight: 1,
+        }}
+      >
+        Stream
+      </span>
+      <span
+        style={{
+          fontFamily: BASE_FONT,
+          fontWeight: 300,
+          fontSize: `${size}rem`,
+          letterSpacing: "-0.055em",
+          color: dark ? "#475569" : "#64748b",
+          lineHeight: 1,
+        }}
+      >
+        Mate
+      </span>
+    </div>
+  );
+}
+
+function Swatch({ hex, label }: { hex: string; label: string }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+      <div
+        style={{
+          width: 36,
+          height: 36,
+          borderRadius: 8,
+          background: hex,
+          border: hex === "#f8fafc" ? "1px solid #e2e8f0" : hex === "#020509" ? "1px solid #0f2d3d" : "none",
+          boxShadow:
+            hex !== "#f8fafc" && hex !== "#020509"
+              ? `0 0 12px ${hex}55`
+              : "none",
+        }}
+      />
+      <span style={{ color: "#475569", fontSize: "0.58rem", letterSpacing: "0.08em" }}>{label}</span>
+    </div>
+  );
+}
+
+function Divider() {
+  return (
+    <div
+      style={{
+        width: 1,
+        height: 28,
+        background: "linear-gradient(to bottom, transparent, #1e3a4a, transparent)",
+      }}
+    />
+  );
+}
+
+function Label({ children }: { children: string }) {
+  return (
+    <p
+      style={{
+        color: "#1e3a4a",
+        fontSize: "0.62rem",
+        letterSpacing: "0.22em",
+        textTransform: "uppercase",
+        marginBottom: 12,
+      }}
+    >
+      {children}
+    </p>
+  );
+}
+
 export function FinalLogo() {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a0a14]">
-        <div className="flex flex-col items-center gap-10">
-          {/* Tamna pozadina */}
-          <div className="flex flex-col items-center gap-3">
-            <p style={{ color: "#334155", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 6 }}>Tamna pozadina</p>
-            <div style={{ display: "flex", alignItems: "baseline" }}>
-              <span style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", fontWeight: 800, fontSize: "3.2rem", letterSpacing: "-0.05em", background: "linear-gradient(120deg, #c4b5fd 0%, #818cf8 50%, #67e8f9 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Stream</span>
-              <span style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", fontWeight: 300, fontSize: "3.2rem", letterSpacing: "-0.05em", color: "#cbd5e1" }}>Mate</span>
-            </div>
-          </div>
-          <div style={{ width: 1, height: 32, background: "linear-gradient(to bottom, transparent, #334155, transparent)" }} />
-          {/* Svijetla pozadina */}
-          <div className="flex flex-col items-center gap-3">
-            <p style={{ color: "#94a3b8", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 6 }}>Svijetla pozadina</p>
-            <div style={{ background: "#f8fafc", padding: "20px 44px", borderRadius: 16, display: "flex", alignItems: "baseline" }}>
-              <span style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", fontWeight: 800, fontSize: "3.2rem", letterSpacing: "-0.05em", background: "linear-gradient(120deg, #7c3aed 0%, #4f46e5 50%, #0891b2 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Stream</span>
-              <span style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", fontWeight: 300, fontSize: "3.2rem", letterSpacing: "-0.05em", color: "#475569" }}>Mate</span>
-            </div>
-          </div>
-          <div style={{ width: 1, height: 32, background: "linear-gradient(to bottom, transparent, #334155, transparent)" }} />
-          {/* PNG Transparent */}
-          <div className="flex flex-col items-center gap-3">
-            <p style={{ color: "#94a3b8", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 6 }}>PNG Transparent</p>
-            <div style={{ padding: "20px 44px", borderRadius: 16, display: "flex", alignItems: "baseline", position: "relative", overflow: "hidden", backgroundImage: "linear-gradient(45deg,#2a2a2a 25%,transparent 25%),linear-gradient(-45deg,#2a2a2a 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#2a2a2a 75%),linear-gradient(-45deg,transparent 75%,#2a2a2a 75%)", backgroundSize: "16px 16px", backgroundPosition: "0 0,0 8px,8px -8px,-8px 0px", backgroundColor: "#1a1a1a", border: "1px solid #2a2a2a" }}>
-              <span style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", fontWeight: 800, fontSize: "3.2rem", letterSpacing: "-0.05em", background: "linear-gradient(120deg, #c4b5fd 0%, #818cf8 50%, #67e8f9 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", position: "relative", zIndex: 1 }}>Stream</span>
-              <span style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", fontWeight: 300, fontSize: "3.2rem", letterSpacing: "-0.05em", color: "rgba(255,255,255,0.85)", position: "relative", zIndex: 1 }}>Mate</span>
-            </div>
-          </div>
-          <div style={{ width: 1, height: 32, background: "linear-gradient(to bottom, transparent, #334155, transparent)" }} />
-          {/* Paleta boja */}
-          <div className="flex flex-col items-center gap-3">
-            <p style={{ color: "#334155", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>Paleta boja</p>
-            <div style={{ display: "flex", gap: 12 }}>
-              {[{ hex: "#7c3aed", label: "Primary" }, { hex: "#4f46e5", label: "Mid" }, { hex: "#06b6d4", label: "Accent" }, { hex: "#0a0a14", label: "Dark BG" }, { hex: "#f8fafc", label: "Light BG" }].map(({ hex, label }) => (
-                <div key={hex} className="flex flex-col items-center gap-2">
-                  <div style={{ width: 36, height: 36, borderRadius: 10, background: hex, border: hex === "#f8fafc" ? "1px solid #e2e8f0" : "none", boxShadow: hex !== "#f8fafc" && hex !== "#0a0a14" ? `0 0 14px ${hex}66` : "none" }} />
-                  <span style={{ color: "#475569", fontSize: "0.6rem" }}>{label}</span>
-                </div>
-              ))}
-            </div>
+  return (
+    <div
+      className="min-h-screen flex items-center justify-center"
+      style={{
+        background: "#020509",
+        fontFamily: BASE_FONT,
+      }}
+    >
+      <div className="flex flex-col items-center" style={{ gap: 36 }}>
+
+        {/* Dark background variant */}
+        <div className="flex flex-col items-center">
+          <Label>Tamna pozadina</Label>
+          <LogoWordmark dark={true} />
+        </div>
+
+        <Divider />
+
+        {/* Light background variant */}
+        <div className="flex flex-col items-center">
+          <Label>Svijetla pozadina</Label>
+          <div
+            style={{
+              background: "#f8fafc",
+              padding: "18px 40px",
+              borderRadius: 12,
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <LogoWordmark dark={false} />
           </div>
         </div>
+
+        <Divider />
+
+        {/* Transparent / checkerboard variant */}
+        <div className="flex flex-col items-center">
+          <Label>PNG Transparent</Label>
+          <div
+            style={{
+              padding: "18px 40px",
+              borderRadius: 12,
+              position: "relative",
+              overflow: "hidden",
+              backgroundImage:
+                "linear-gradient(45deg,#1a1a1a 25%,transparent 25%),linear-gradient(-45deg,#1a1a1a 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#1a1a1a 75%),linear-gradient(-45deg,transparent 75%,#1a1a1a 75%)",
+              backgroundSize: "16px 16px",
+              backgroundPosition: "0 0,0 8px,8px -8px,-8px 0px",
+              backgroundColor: "#111",
+              border: "1px solid #1e3a4a",
+            }}
+          >
+            <LogoWordmark dark={true} />
+          </div>
+        </div>
+
+        <Divider />
+
+        {/* Colour palette */}
+        <div className="flex flex-col items-center">
+          <Label>Paleta boja</Label>
+          <div style={{ display: "flex", gap: 14 }}>
+            {[
+              { hex: "#38bdf8", label: "Primary" },
+              { hex: "#0ea5e9", label: "Mid" },
+              { hex: "#06b6d4", label: "Accent" },
+              { hex: "#0f172a", label: "Surface" },
+              { hex: "#020509", label: "Dark BG" },
+              { hex: "#f8fafc", label: "Light BG" },
+            ].map((s) => (
+              <Swatch key={s.hex} {...s} />
+            ))}
+          </div>
+        </div>
+
       </div>
-    );
-  }
+    </div>
+  );
+}
